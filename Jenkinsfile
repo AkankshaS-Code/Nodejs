@@ -1,21 +1,27 @@
+
+  //Jenkins file only to tutorial example
 pipeline {
   agent any
-  tools {nodejs "node" }
+    
+  tools {nodejs "NodeJS-Build"}
+    
   stages {
+        
     stage('Cloning Git') {
       steps {
-        git 'https://github.com/sanjeevkumarrao/node-hello-world'
+        git 'https://github.com/gustavoapolinario/node-todo-frontend'
       }
     }
-    stage('Build') {
-       steps {
-         sh 'npm install'
-       }
+        
+    stage('Install dependencies') {
+      steps {
+        sh 'npm install'
+      }
     }
+     
     stage('Test') {
       steps {
-        sh 'npm test'
+         sh 'npm test'
       }
-    }
+    }      
   }
-}
